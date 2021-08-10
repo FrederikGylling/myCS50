@@ -38,12 +38,13 @@ int main(int argc, char *argv[])
     uint8_t headBuffer[HEADER_SIZE];
     fread(headBuffer, HEADER_SIZE, 1, input);
     fwrite(headBuffer, HEADER_SIZE, 1, output);
-    
+
     // TODO: Read samples from input file and write updated data to output file
     int16_t sampleBuffer;
     while (fread(&sampleBuffer, sizeof(int16_t), 1, input))
     {
-        sampleBuffer = sampleBuffer * factor;
+        // update sampleBuffer with the factoring from command-line argument
+        sampleBuffer *= factor;
         fwrite(&sampleBuffer, sizeof(int16_t), 1, output);
     }
     // Close files
