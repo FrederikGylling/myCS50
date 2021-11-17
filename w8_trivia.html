@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+
+        <script>
+
+            // TODO: Add code to check answers to questions
+
+            // Wait to run code for DOM to be loaded
+            document.addEventListener('DOMContentLoaded', function() {
+
+                // when correct answer in part 1 is clicked
+                let correct = document.querySelector('.correct');
+                correct.addEventListener('click',function () {
+                    correct.style.backgroundColor = 'green';
+                    let feedback1 =document.querySelector('#feedback1');
+                    feedback1.innerHTML = 'Correct!';
+                    feedback1.style.backgroundColor = 'green';
+                });
+
+                // when incorrect answer in part 1 is clicked
+                let incorrects = document.querySelectorAll('.incorrect');
+                for (let i = 0; i < incorrects.length; i++) {
+                    incorrects[i].addEventListener('click',function () {
+                        incorrects[i].style.backgroundColor = 'red';
+                        let feedback1 =document.querySelector('#feedback1');
+                        feedback1.innerHTML = 'Incorrect!';
+                        feedback1.style.backgroundColor = 'red';
+                    });
+                }
+
+                // Check free submission in part 2
+                document.querySelector('#check').addEventListener('click', function () {
+                    let input = document.querySelector('input');
+                    if (input.value.toLowerCase() == 'copenhagen') {
+                        input.style.backgroundColor = 'green';
+                        let feedback2 = document.querySelector('#feedback2');
+                        feedback2.innerHTML = 'Correct!';
+                        feedback2.style.backgroundColor = 'green';
+                    } else {
+                        input.style.backgroundColor = 'red';
+                        let feedback2 =document.querySelector('#feedback2');
+                        feedback2.innerHTML = 'Incorrect!';
+                        feedback2.style.backgroundColor = 'red';
+                    }
+                });
+
+            });
+
+        </script>
+
+    </head>
+    <body>
+
+        <div class="jumbotron">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+
+                <!-- TODO: Add multiple choice question here -->
+                <h3>What is the color of the Danish flag?</h3>
+
+                <button autofocus class="incorrect"> White & Yellow </button>
+                <button class="incorrect"> Red & Blue </button>
+                <button class="correct"> Red & White </button>
+
+                <p id="feedback1"></p>
+
+            </div>
+
+            <div class="section; return false;">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+
+                <!-- TODO: Add free response question here -->
+                <h3>What is the capital of Denmark?</h3>
+
+                <p>
+                    <form>
+                        <input autocomplete="off" placeholder="Type your answer" type="text">
+                        <button id="check">Check Answer</button>
+                    </form>
+                </p>
+
+                <p id="feedback2"></p>
+
+            </div>
+
+        </div>
+    </body>
+</html>
